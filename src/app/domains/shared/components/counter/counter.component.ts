@@ -1,9 +1,8 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { ProductComponent } from '../../../products/components/product/product.component';
 
 @Component({
   selector: 'app-counter',
-  imports: [ProductComponent],
+  imports: [],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css',
 })
@@ -19,12 +18,16 @@ export class CounterComponent {
     console.log('-'.repeat(10));
   }
 
-  ngOnChanges(chahes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     //No ASYNC
     //Before and during render
     console.log('ngOnChanges');
     console.log('-'.repeat(10));
-    console.log(chahes);
+    console.log(changes);
+    const duration = changes['duration'];
+    if (duration && duration.currentValue !== duration.previousValue) {
+      this.doSomething();
+    }
   }
 
   ngOnInit() {
@@ -48,5 +51,10 @@ export class CounterComponent {
     //before destroy
     console.log('ngOnDestroy');
     console.log('-'.repeat(10));
+  }
+
+  doSomething() {
+    console.log('change duration');
+    //async
   }
 }
