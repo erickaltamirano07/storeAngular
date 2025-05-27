@@ -6,11 +6,11 @@ import { ProductService } from '@shared/services/product.service';
 import { Category } from '@shared/models/category.model';
 import { CategoryService } from '@shared/services/category.service';
 import { RouterLinkWithHref } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-list',
-  imports: [ProductComponent, RouterLinkWithHref, CommonModule],
+  imports: [ProductComponent, RouterLinkWithHref],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
